@@ -12,7 +12,7 @@ const HomePage = () => {
       <HeroPage />
       <TechnologyPartner />
       <ServicePage />
-      <Consultant />
+      {/* <Consultant /> */}
       <ConvertecPage />
       <ThinkingPage />
       <ContactForm />

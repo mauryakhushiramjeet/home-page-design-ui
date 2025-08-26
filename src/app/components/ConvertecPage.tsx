@@ -101,7 +101,7 @@ const ConvertecPage = () => {
           alt="image"
           height={57}
           width={43}
-          className="absolute left-[-1%] 481sm:left-[1%] sx:left-[3%] 992md:left-[1%] 2xl:left-[3%] bottom-[8%] xl:bottom-[8%] 2xl:bottom-[8%] h-[29px] 481sm:h-[39px] sm:h-[55px] 992md:h-[44px] 2xl:h-[57px]"
+          className="absolute left-[-1%] 481sm:left-[1%] sx:left-[3%] 992md:left-[1%] 2xl:left-[3%] bottom-[8%] xl:bottom-[8%] 2xl:bottom-[8%] h-[29px] 481sm:h-[39px] sm:h-[55px] 992md:h-[44px] lg:h-[48px]  2xl:h-[57px]"
         />
         <Image
           src="/images/convertecArrow.svg"

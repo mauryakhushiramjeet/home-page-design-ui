@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="flex gap-5 flex-col items-center w-full">
           {menuList.map((menu, index) => (
             <div key={index}>
-              <p className="text-base  text-[#666666] py-[5px]  481sm:py-2 hover:bg-blue-400  px-7 hover:text-white cursor-pointer transition-all delay-500 duration-700 w-full">
+              <p className="text-base  text-[#666666] py-[5px]  rounded-[4px] 481sm:py-2 hover:bg-blue-400  px-7 hover:text-white cursor-pointer transition-all duration-500 w-full">
                 {menu}
               </p>
             </div>

@@ -37,7 +37,9 @@ const Consultant = () => {
       title: "We map the work before we move",
       description: (
         <>
-         Legacy systems are one of the biggest hidden blockers. We help update infrastructure in stages — without shutting everything down or overspending on tech.
+          Legacy systems are one of the biggest hidden blockers. We help update
+          infrastructure in stages — without shutting everything down or
+          overspending on tech.
         </>
       ),
     },
@@ -55,7 +57,7 @@ const Consultant = () => {
   ];
 
   return (
-    <div className="px-5 481sm:px-[45px] md:px-[70px] xl:px-[120px] 16603xl:px-[200px] py-[130px] bg-[#000000]">
+    <div className="px-5 481sm:px-[45px] md:px-[70px] xl:px-[120px] 16603xl:px-[200px] py-[130px] bg-[#000000] h-screen">
       <div className="text-center px-[110px]">
         <p className="font-bold font-nexa-bold leading-[70px] text-[54px] text-[white]">
           The Consultant You Need
@@ -93,11 +95,11 @@ const Consultant = () => {
         </div>
       </div>
       <div className="relative w-full border ">
-        <div className="absolute  flex">
+        {/* <div className="absolute  flex">
             <Image src="/images/cunsultantbg.svg" alt="consulatentbg-image" width={713} height={413}/>
-        </div>
+        </div> */}
         <div className="flex flex-col gap-[100px]">
-{/* {
+          {/* {
     processSteps1.map((step)=>(
         <div></div>
     ))
