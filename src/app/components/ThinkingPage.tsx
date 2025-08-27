@@ -1,10 +1,39 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import image1 from "/images/think1.svg";
-import image2 from "/images/think2.svg";
-import image3 from "/images/think3.svg";
+import React, { useEffect, useState } from "react";
 
 const ThinkingPage = () => {
+  const [forward, setForward] = useState<boolean>(true);
+  const [deg, setDeg] = useState(45);
+  // useEffect(() => {
+  //   if (forward) {
+  //     if (deg < 360) {
+  //       setInterval(() => {
+  //         setDeg((prev) => prev + 2);
+  //       }, 2000);
+  //     } else {
+  //       setForward(false);
+  //     }
+  //   } else {
+  //     if (deg > 45) {
+  //       setDeg((prev) => prev - 1);
+  //     } else {
+  //       setForward(true);
+  //     }
+  //   }
+  // }, [deg, forward]);
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const rotate = () => {
+      setDeg((prev) => (prev + 0.9) % 360); // smooth rotation
+      animationFrameId = requestAnimationFrame(rotate);
+    };
+
+    animationFrameId = requestAnimationFrame(rotate);
+
+    return () => cancelAnimationFrame(animationFrameId); // cleanup
+  }, []);
   const cardDetailes = [
     {
       image: "/images/think1.svg",
@@ -27,7 +56,6 @@ const ThinkingPage = () => {
         "Visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals quality intellectual...",
       date: "23 January, 2021",
     },
-  
   ];
   return (
     <div className="px-5 481sm:px-[45px] md:px-[70px] xl:px-[120px] 16603xl:px-[200px] py-9 2xl:py-20 16603xl:py-[130px] bg-black">
@@ -63,46 +91,57 @@ const ThinkingPage = () => {
         {cardDetailes.map((details, index) => (
           <div
             key={index}
-            className="w-full flex flex-col flex-1 rounded-[14px] overflow-hidden"
+            style={{
+              background: `linear-gradient(${deg}deg, #29ABE233, #000000)`,
+              borderRadius: "14px",
+            }}
+            className=" transition-all duration-700 overflow-hidden p-[2px]  2xl:p-[3px]"
           >
-            <div>
-              <Image src={details.image} alt="image" width={486} height={350} />
-            </div>
-            <div className="relative flex flex-col py-[25px] xl:py-[30px] px-[15px] 481sm:px-[25px] xl:px-[30px] bg-[#000000] rounded-lg bg-gradient-to-tr from-[#29ABE233] to-[#000000] flex-1">
-              {/* Right border gradient */}
-              <div className="absolute right-0 top-0 w-[2px] h-full bg-gradient-to-b  to-[#29ABE233]"></div>
+            <div className="w-full flex flex-col flex-1 ">
+              <div>
+                <Image
+                  src={details.image}
+                  alt="image"
+                  width={486}
+                  height={350}
+                />
+              </div>
+              <div className=" flex flex-col py-[25px] xl:py-[30px] px-[15px] 481sm:px-[25px] xl:px-[30px] bg-[#000000] rounded-lg bg-gradient-to-tr from-[#29ABE233] to-[#000000] flex-1">
+                {/* Right border gradient */}
+                {/* <div className="absolute right-0 top-0 w-[2px] h-full bg-gradient-to-b  to-[#29ABE233]"></div> */}
 
-              {/* Bottom border gradient */}
-              <div className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r  to-[#29ABE233]"></div>
+                {/* Bottom border gradient */}
+                {/* <div className="absolute left-0 bottom-0 w-full h-[2px] "></div> */}
 
-              {/* Content */}
-              <p className="font-bold font-Arial text-[17px] 2xl:text-[20px] leading-[28px] text-[#FFFFFF]">
-                {details.title}
-              </p>
-              <p className="pt-[10px] text-[#CCCCCC] text-[14px] 2xl:text-[16px] leading-[24px]">
-                {details.description}
-              </p>
+                {/* Content */}
+                <p className="font-bold font-Arial text-[17px] 2xl:text-[20px] leading-[28px] text-[#FFFFFF]">
+                  {details.title}
+                </p>
+                <p className="pt-[10px] text-[#CCCCCC] text-[14px] 2xl:text-[16px] leading-[24px]">
+                  {details.description}
+                </p>
 
-              <div className="pt-5 flex w-full justify-between items-center mt-auto">
-                <div className="flex gap-3 items-center">
-                  <Image
-                    src="/images/calender.svg"
-                    alt="calender-image"
-                    width={24}
-                    height={24}
-                  />
-                  <p className="text-[#FFFFFF] text-[14px] 2xl:text-[16px] leading-[24px]">
-                    {details.date}
-                  </p>
-                </div>
-                <div className="w-fit border rounded-[14px]">
-                  <Image
-                    src="/images/thinkPageArrow.svg"
-                    alt="arrow"
-                    width={30}
-                    height={30}
-                    className="w-[25px] 2xl:w-[30px]"
-                  />
+                <div className="pt-5 flex w-full justify-between items-center mt-auto">
+                  <div className="flex gap-3 items-center">
+                    <Image
+                      src="/images/calender.svg"
+                      alt="calender-image"
+                      width={24}
+                      height={24}
+                    />
+                    <p className="text-[#FFFFFF] text-[14px] 2xl:text-[16px] leading-[24px]">
+                      {details.date}
+                    </p>
+                  </div>
+                  <div className="w-fit border rounded-[14px]">
+                    <Image
+                      src="/images/thinkPageArrow.svg"
+                      alt="arrow"
+                      width={30}
+                      height={30}
+                      className="w-[25px] 2xl:w-[30px]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

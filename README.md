@@ -36,14 +36,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 Please find today's work updates below :
-Date- 25–08-2025
+Date- 26–08-2025
 
 Task name ::Home page ui
 Completed task::
--Created service with responsive
--Created contact form page with sesponsive
--Created footer section responsive
--
-OnGoing task::
--working on ui of thinking page
+Created project thinking page with full responsive
+-Fix responsive in navbar
+-Created CovertecPage with responsive
+-Fix responsiveness in planning page
 
+OnGoing task::
+-working on making pending page ui and responsive
