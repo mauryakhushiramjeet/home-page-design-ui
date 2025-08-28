@@ -8,9 +8,11 @@ const HeroPage = () => {
 
   const [index, setIndex] = useState<number>(0);
   const [index1, setIndex1] = useState<number>(0);
+  const [starTop, setStarTop] = useState<number>(0);
+  const [starTop2, setStarTop2] = useState<number>(10);
 
   const speed: number = 300;
-  const text: string = "We Build Beyondd";
+  const text: string = "We Build Beyonddd";
   const props = useSpring({
     to: { width: `${index}ch` },
     config: { duration: speed },
@@ -24,7 +26,7 @@ const HeroPage = () => {
       if (index <= text.length) {
         setTimeout(() => {
           setIndex((i) => i + 1);
-        }, speed);
+        }, 250);
       } else {
         setForward(false);
       }
@@ -32,12 +34,38 @@ const HeroPage = () => {
       if (index > 0) {
         setTimeout(() => {
           setIndex((i) => i - 1);
-        }, speed);
+        }, 250);
       } else {
         setForward(true);
       }
     }
   }, [text, index, forward]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (starTop < 200) {
+        setStarTop((prev) => prev + 1);
+      }
+
+      if (starTop == 200) {
+        setTimeout(() => {
+          setStarTop(0);
+        }, 1000);
+      }
+    }, 15);
+  }, [starTop]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (starTop2 < 200) {
+        setStarTop2((prev) => prev + 1);
+      }
+
+      if (starTop2 == 200) {
+        setTimeout(() => {
+          setStarTop2(20);
+        }, 600);
+      }
+    }, 20);
+  }, [starTop2]);
   const str = "Your isionmmn";
   useEffect(() => {
     if (forward1) {
@@ -58,17 +86,39 @@ const HeroPage = () => {
       }
     }
   }, [index1, forward]);
+
   return (
     <div className="bg-[url('/images/hero.svg')] bg-center bg-cover relative flex justify-center z-10 items-center">
       <div className="w-[160px] 2xl:w-[220px] 16603xl:w-[220px] h-[160px] 2xl:h-[220px] 16603xl:h-[266px] rounded-full blur-[70px] 2xl:blur-[80px] 16603xl:blur-[100px] border bg-[#29ABE2]  z-0 absolute top-[-90px] 2xl:top-[-120px] 16603xl:top-[-103px] border-white"></div>
+      <Image
+        src="/images/star.png"
+        width={1000}
+        height={1000}
+        alt="star"
+        style={{ top: starTop + "px" }}
+        className={`absolute object-contain   ${
+          starTop === 200 ? "opacity-0 duration-900" : "block opacity-25"
+        }`}
+      />
+      <Image
+        src="/images/star.png"
+        width={1000}
+        height={1000}
+        alt="star"
+        style={{ top: starTop2 + "px" }}
+        className={`absolute object-contain   ${
+          starTop2 === 200 ? "opacity-0 duration-700" : "block opacity-25 "
+        }`}
+      />
+
       <div className="font-nexa-bold font-bold text-white text-[24px] 481sm:text-[35px] sm:text-[45px] lg:text-[60px] 2xl:text-[80px] max-481sm:mx-5 16603xl:text-[100px] w-full 481sm:max-w-[405px] sm:max-w-[542px] lg:max-w-[700px]  2xl:max-w-[888px] 16603xl:max-w-[1082px] my-[140px] md:my-[160px] 2xl:my-[200px] 16603xl:my-[311px]">
         <animated.div
           style={props}
-          className="uppercase leading-[100%] overflow-hidden whitespace-nowrap border-r-2 border-white"
+          className="uppercase leading-[100%] overflow-hidden whitespace-nowrap border-r-2 border-white relative z-10"
         >
           We Build Beyond
         </animated.div>{" "}
-        <div className="flex justify-end uppercase leading-[100%] mt-[15px] lg:mt-[30px] items-center ">
+        <div className="flex justify-end uppercase leading-[100%] mt-[15px] lg:mt-[30px] items-center relative z-10">
           <animated.div
             style={{ ...props2 }}
             className="flex overflow-hidden whitespace-nowrap border-r-2 "
@@ -89,7 +139,7 @@ const HeroPage = () => {
           <p className="font-nexa-bold line-[100%] text-center">
             Customized tech solutions, made to move your business forward.
           </p>
-          <button className="bg-[#0071BC] text-white px-[19px] 481sm:px-9 py-3 2xl:py-[14px] rounded-[4px]">
+          <button className="bg-[#0071BC] text-white px-[19px] 481sm:px-9 py-3 2xl:py-[14px] rounded-[4px] z-10">
             Contact Us
           </button>
         </div>
